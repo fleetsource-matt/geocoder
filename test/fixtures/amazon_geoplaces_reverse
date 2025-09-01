@@ -1,0 +1,58 @@
+Aws::GeoPlaces::Types::ReverseGeocodeResponse.new(
+  pricing_bucket: "Core",
+  result_items: [
+    Aws::GeoPlaces::Types::ReverseGeocodeResultItem.new(
+      place_id: "reverse_geocode_place_id",
+      place_type: "PointAddress",
+      title: "4 Penn Plz, New York, NY 10001, United States",
+      address: Aws::GeoPlaces::Types::Address.new(
+        label: "4 Penn Plz, New York, NY 10001, United States",
+        country: Aws::GeoPlaces::Types::Country.new(
+          code_2: "US",
+          code_3: "USA",
+          name: "United States"
+        ),
+        region: Aws::GeoPlaces::Types::Region.new(
+          code: "NY",
+          name: "New York"
+        ),
+        sub_region: Aws::GeoPlaces::Types::SubRegion.new(
+          code: nil,
+          name: "New York"
+        ),
+        locality: "New York",
+        district: "Chelsea",
+        sub_district: nil,
+        postal_code: "10001",
+        block: nil,
+        sub_block: nil,
+        intersection: nil,
+        street: "Penn Plz",
+        street_components: [
+          Aws::GeoPlaces::Types::StreetComponents.new(
+            base_name: "Penn",
+            type: "Plz",
+            type_placement: "AfterBaseName",
+            type_separator: " ",
+            prefix: nil,
+            suffix: nil,
+            direction: nil,
+            language: "en"
+          )
+        ],
+        address_number: "4",
+        building: nil
+      ),
+      address_number_corrected: nil,
+      postal_code_details: nil,
+      position: [-73.99338, 40.75047],
+      distance: 13,
+      map_view: [-73.99486, 40.74938, -73.99271, 40.75029],
+      categories: nil,
+      food_types: nil,
+      access_points: nil,
+      time_zone: nil,
+      political_view: nil
+    )
+  ]
+)

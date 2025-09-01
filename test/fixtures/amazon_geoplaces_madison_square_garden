@@ -1,0 +1,111 @@
+Aws::GeoPlaces::Types::GeocodeResponse.new(
+  pricing_bucket: "Core",
+  result_items: [
+    Aws::GeoPlaces::Types::GeocodeResultItem.new(
+      place_id: "result_1_place_id",
+      place_type: "PointOfInterest",
+      title: "Madison Square Garden",
+      address: Aws::GeoPlaces::Types::Address.new(
+        label:"Madison Square Garden, 4 Penn Plz, New York, NY 10001, United States",
+        country: Aws::GeoPlaces::Types::Country.new(code_2: "US", code_3: "USA", name: "United States"),
+        region: Aws::GeoPlaces::Types::Region.new(code: "NY", name: "New York"),
+        sub_region: Aws::GeoPlaces::Types::SubRegion.new(code: nil, name: "New York"),
+        locality: "New York",
+        district: "Chelsea",
+        sub_district: nil,
+        postal_code: "10001",
+        block: nil,
+        sub_block: nil,
+        intersection: nil,
+        street: "Penn Plz",
+        street_components: [
+          Aws::GeoPlaces::Types::StreetComponents.new(
+            base_name: "Penn",
+            type: "Plz",
+            type_placement: "AfterBaseName",
+            type_separator: " ",
+            prefix: nil,
+            suffix: nil,
+            direction: nil,
+            language: "en"
+          )
+        ],
+        address_number: "4",
+        building: nil
+      ),
+      address_number_corrected: nil,
+      postal_code_details: nil,
+      position: [-73.9934, 40.75051],
+      distance: nil,
+      map_view: nil,
+      categories: [
+        Aws::GeoPlaces::Types::Category.new(
+          id: "sports_complex-stadium",
+          name: "Sports Complex-Stadium",
+          localized_name: "Sports Complex/Stadium",
+          primary: true
+        ),
+        Aws::GeoPlaces::Types::Category.new(
+          id: "live_entertainment-music",
+          name: "Live Entertainment-Music",
+          localized_name: "Live Entertainment-Music",
+          primary: false
+        ),
+        Aws::GeoPlaces::Types::Category.new(
+          id: "theatre,_music_and_culture",
+          name: "Theatre, Music and Culture",
+          localized_name: "Theatre, Music and Culture",
+          primary: false
+        ),
+        Aws::GeoPlaces::Types::Category.new(
+          id: "performing_arts",
+          name: "Performing Arts",
+          localized_name: "Performing Arts Center",
+          primary: false
+        ),
+        Aws::GeoPlaces::Types::Category.new(
+          id: "landmark-attraction",
+          name: "Landmark-Attraction",
+          localized_name: "Landmark-Attraction",
+          primary: false
+        ),
+        Aws::GeoPlaces::Types::Category.new(
+          id: "grocery",
+          name: "Grocery",
+          localized_name: "Grocery",
+          primary: false
+        ),
+        Aws::GeoPlaces::Types::Category.new(
+          id: "travel_agent-ticketing",
+          name: "Travel Agent-Ticketing",
+          localized_name: "Travel Agent/Ticketing",
+          primary: false
+        )
+      ],
+      food_types: nil,
+      access_points: nil,
+      time_zone: nil,
+      political_view: nil,
+      match_scores: Aws::GeoPlaces::Types::MatchScoreDetails.new(
+        overall: 1.0,
+        components: Aws::GeoPlaces::Types::ComponentMatchScores.new(
+          title: 1.0,
+          address: Aws::GeoPlaces::Types::AddressComponentMatchScores.new(
+            country: nil,
+            region: nil,
+            sub_region: nil,
+            locality: nil,
+            district: nil,
+            sub_district: nil,
+            postal_code: nil,
+            block: nil,
+            sub_block: nil,
+            intersection: nil,
+            address_number: nil,
+            building: nil
+          )
+        )
+      )
+    )
+  ]
+)

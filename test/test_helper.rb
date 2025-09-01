@@ -21,7 +21,7 @@ if configs.keys.include? ENV['DB']
     SqliteExt.register_ruby_math
   end
   ActiveRecord::Base.establish_connection(db_name.to_sym)
-  ActiveRecord::Base.default_timezone = :utc
+  ActiveRecord.default_timezone = :utc
 
   if defined? ActiveRecord::MigrationContext
     if ActiveRecord.version.release < Gem::Version.new('6.0.0')
@@ -111,6 +111,15 @@ Geocoder::Railtie.insert
 #
 module Geocoder
   module Lookup
+    # Allow reconfiguration of lookup services between tests
+    def self.reconfigure!(service = nil)
+      if service and @services
+        @services.delete(service)
+      else
+        @services = {}
+      end
+    end
+
     class Base
       private
       def fixture_exists?(filename)
@@ -589,6 +598,54 @@ module Geocoder
       private
       def client
         MockAmazonLocationServiceClient.new
+      end
+    end
+
+    require "geocoder/lookups/amazon_geoplaces"
+
+    class MockAmazonGeoplacesClient
+      class << self
+        attr_accessor :constructed_with, :method_called, :called_with
+
+        def reset!
+          self.constructed_with = nil
+          self.method_called = nil
+          self.called_with = nil
+          self.respond_with = nil
+        end
+
+        def respond_with_fixture(fixture)
+          eval File.read("test/fixtures/amazon_geoplaces_#{fixture}")
+        end
+      end
+
+      def initialize(**kwargs)
+        self.class.constructed_with = kwargs
+      end
+
+      def geocode(args)
+        fixture = args[:query_text]&.match?(/Madison Square Garden/i) ? "madison_square_garden" : "no_results"
+        record(:geocode, args, fixture: fixture)
+      end
+
+      def reverse_geocode(args)
+        record(:reverse_geocode, args, fixture: "reverse")
+      end
+
+      def record(method, args, fixture:)
+        self.class.method_called = method
+        self.class.called_with = args
+        respond_with_fixture(fixture)
+      end
+
+      def respond_with_fixture(fixture)
+        eval File.read("test/fixtures/amazon_geoplaces_#{fixture}")
+      end
+    end
+
+    class Geocoder::Lookup::AmazonGeoplaces
+      def client_class
+        MockAmazonGeoplacesClient
       end
     end
 

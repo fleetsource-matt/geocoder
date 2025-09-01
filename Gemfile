@@ -12,6 +12,8 @@ group :development, :test do
   gem 'ostruct'
   gem 'bigdecimal'
 
+  gem 'aws-sdk-geoplaces'
+
   platforms :jruby do
     gem 'jruby-openssl'
     gem 'jgeoip'

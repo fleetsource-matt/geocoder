@@ -1,0 +1,4 @@
+Aws::GeoPlaces::Types::GeocodeResponse.new(
+  pricing_bucket: "Core",
+  result_items: []
+)
