@@ -16,6 +16,10 @@ module Geocoder::Result
       @data['display_name']
     end
 
+    def street_address
+      [house_number, street].compact.join(' ')
+    end
+
     def street
       %w[road pedestrian highway].each do |key|
         return address_data[key] if address_data.key?(key)
